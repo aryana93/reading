@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Reading</title>
+  <style>
+  @import url("https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap");
+
+.out,
+.red {
+  background: powderblue;
+  font-size: 4rem;
+  padding: 1rem;
+  margin: 2rem;
+  text-align: center;
+  font-family: "open sans";
+  border-radius: 1rem;
+  min-height: 5rem;
+}
+
+.red {
+  color: red;
+  padding: 0;
+  margin: 0;
+}
+
+.playingcard {
+}
+.button-wrapper {
+  text-align: center;
+}
+
+.button {
+  font-family: "open sans";
+  font-size: 2rem;
+  padding: 1rem;
+  background-color: powderblue;
+  border: none;
+  border-radius: 1rem;
+  margin: 1rem;
+}
+</style>
+</head>
+
+<body>
+<div id="out" class="out">
+  XXX
+</div>
+<div class="button-wrapper">
+  <input type="button" id="button-tarot" class="button" value="Tarot">
+  <input type="button" id="button-lenormand" class="button" value="Lenormand">
+</div>
+
+  <script>
+  const output = document.querySelector("#out");
+const buttonTarot = document.querySelector("#button-tarot");
+const buttonLenormand = document.querySelector("#button-lenormand");
+const cards = [
+  "0 The Fool",
+  "I The Magician",
+  "II The High Priestess",
+  "III The Empress",
+  "IV The Emperor",
+  "V The Hierophant",
+  "VI The Lovers",
+  "VII The Chariot",
+  "VIII Strength",
+  "IX The Hermit",
+  "X Wheel of Fortune",
+  "XI Justice",
+  "XII The Hanged Man",
+  "XIII Death",
+  "XIV Temperance",
+  "XV The Devil",
+  "XVI The Tower",
+  "XVII The Star",
+  "XVIII The Moon",
+  "XIX The Sun",
+  "XX Judgement",
+  "XXI The World",
+  "🃑",
+  "🃒",
+  "🃓",
+  "🃔",
+  "🃕",
+  "🃖",
+  "🃗",
+  "🃘",
+  "🃙",
+  "🃚",
+  "🃛",
+  "🃜",
+  "🃝",
+  "🃞",
+  "🃁",
+  "🃂",
+  "🃃",
+  "🃄",
+  "🃅",
+  "🃆",
+  "🃇",
+  "🃈",
+  "🃉",
+  "🃊",
+  "🃋",
+  "🃌",
+  "🃍",
+  "🃎",
+  "🂡",
+  "🂢",
+  "🂣",
+  "🂤",
+  "🂥",
+  "🂦",
+  "🂧",
+  "🂨",
+  "🂩",
+  "🂪",
+  "🂫",
+  "🂬",
+  "🂭",
+  "🂮",
+  "🂱",
+  "🂲",
+  "🂳",
+  "🂴",
+  "🂵",
+  "🂶",
+  "🂷",
+  "🂸",
+  "🂹",
+  "🂺",
+  "🂻",
+  "🂼",
+  "🂽",
+  "🂾"
+];
+
+const lenormands = [
+  // "19 Tower - 6 ♠",
+  // "27 Letter - 7 ♠",
+  // "20 Garden - 8 ♠",
+  // "35 Anchor - 9 ♠",
+  // "3 Ship - 10 ♠",
+  // "13 Child - Jack ♠",
+  // "9 Bouquet - Queen ♠",
+  // "30 Lily - King ♠",
+  // "29 Woman - Ace ♠",
+  // "16 Star - 6 <span class='red'>♥</span>",
+  // "5 Tree - 7 <span class='red'>♥</span>",
+  // "32 Moon - 8 <span class='red'>♥</span>",
+  // "1 Rider - 9 <span class='red'>♥</span>",
+  // "18 Dog - 10 <span class='red'>♥</span>",
+  // "24 Heart - Jack <span class='red'>♥</span>",
+  // "17 Stork - Queen <span class='red'>♥</span>",
+  // "4 House - King <span class='red'>♥</span>",
+  // "28 Man - Ace <span class='red'>♥</span>",
+  // "36 Cross - 6 ♣",
+  // "23 Mice - 7 ♣",
+  // "21 Mountain - 8 ♣",
+  // "14 Fox - 9 ♣",
+  // "15 Bear - 10 ♣",
+  // "11 Whip - Jack ♣",
+  // "7 Snake - Queen ♣",
+  // "6 Clouds - King ♣",
+  // "25 Ring - Ace ♣",
+  // "2 Clover - 6 <span class='red'>♦</span>",
+  // "12 Bird - 7 <span class='red'>♦</span>",
+  // "33 Key - 8 <span class='red'>♦</span>",
+  // "8 Coffin - 9 <span class='red'>♦</span>",
+  // "26 Book - 10 <span class='red'>♦</span>",
+  // "10 Scythe -Jack  <span class='red'>♦</span>",
+  // "22 Path - Queen <span class='red'>♦</span>",
+  // "34 Fish - King <span class='red'>♦</span>",
+  // "31 Sun - Ace <span class='red'>♦</span>"
+
+  "(19) Tower <span class='playingcard'>🂦</span>",
+  "(27) Letter <span class='playingcard'>🂧</span>",
+  "(20) Garden <span class='playingcard'>🂨</span>",
+  "(35) Anchor <span class='playingcard'>🂩</span>",
+  "(3) Ship <span class='playingcard'>🂪</span>",
+  "(13) Child <span class='playingcard'>🂫</span>",
+  "(9) Bouquet <span class='playingcard'>🂭</span>",
+  "(30) Lily <span class='playingcard'>🂮</span>",
+  "(29) Woman <span class='playingcard'>🂡</span>",
+  "(16) Star <span class='red playingcard'>🂶</span>",
+  "(5) Tree <span class='red playingcard'>🂷</span>",
+  "(32) Moon <span class='red playingcard'>🂸</span>",
+  "(1) Rider <span class='red playingcard'>🂹</span>",
+  "(18) Dog <span class='red playingcard'>🂺</span>",
+  "(24) Heart <span class='red playingcard'>🂻</span>",
+  "(17) Stork <span class='red playingcard'>🂽</span>",
+  "(4) House <span class='red playingcard'>🂾</span>",
+  "(28) Man <span class='red playingcard'>🂱</span>",
+  "(36) Cross <span class='playingcard'>🃖</span>",
+  "(23) Mice <span class='playingcard'>🃗</span>",
+  "(21) Mountain <span class='playingcard'>🃘</span>",
+  "(14) Fox <span class='playingcard'>🃙</span>",
+  "(15) Bear <span class='playingcard'>🃚</span>",
+  "(11) Whip <span class='playingcard'>🃛</span>",
+  "(7) Snake <span class='playingcard'>🃝</span>",
+  "(6) Clouds <span class='playingcard'>🃞</span>",
+  "(25) Ring <span class='playingcard'>🃑</span>",
+  "(2) Clover <span class='red playingcard'>🃆</span>",
+  "(12) Bird <span class='red playingcard'>🃇</span>",
+  "(33) Key <span class='red playingcard'>🃈</span>",
+  "(8) Coffin <span class='red playingcard'>🃉</span>",
+  "(26) Book <span class='red playingcard'>🃊</span>",
+  "(10) Scythe <span class='red playingcard'>🃋</span>",
+  "(22) Path <span class='red playingcard'>🃍</span>",
+  "(34) Fish <span class='red playingcard'>🃎</span>",
+  "(31) Sun <span class='red playingcard'>🃁</span>"
+];
+
+const upOrDown = ["↑", "↓"];
+
+// function getRandomInt(min, max) {
+//   min = Math.ceil(min);
+//   max = Math.floor(max);
+//   return Math.floor(Math.random() * (max - min) + min); //The maximum is exclusive and the minimum is inclusive
+// }
+
+function getRandomInt(max) {
+  return Math.floor(Math.random() * max);
+}
+
+buttonTarot.addEventListener("click", (e) => {
+  output.innerHTML = cards[getRandomInt(78)] + upOrDown[getRandomInt(2)];
+});
+
+buttonLenormand.addEventListener("click", (e) => {
+  output.innerHTML = lenormands[getRandomInt(36)];
+});
+
+  </script>
+</body>
+
+</html>

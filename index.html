@@ -54,7 +54,7 @@
 </div>
 
   <script>
-  const output = document.querySelector("#out");
+ const output = document.querySelector("#out");
 const buttonTarot = document.querySelector("#button-tarot");
 const buttonLenormand = document.querySelector("#button-lenormand");
 const cards = [
@@ -139,43 +139,6 @@ const cards = [
 ];
 
 const lenormands = [
-  // "19 Tower - 6 ♠",
-  // "27 Letter - 7 ♠",
-  // "20 Garden - 8 ♠",
-  // "35 Anchor - 9 ♠",
-  // "3 Ship - 10 ♠",
-  // "13 Child - Jack ♠",
-  // "9 Bouquet - Queen ♠",
-  // "30 Lily - King ♠",
-  // "29 Woman - Ace ♠",
-  // "16 Star - 6 <span class='red'>♥</span>",
-  // "5 Tree - 7 <span class='red'>♥</span>",
-  // "32 Moon - 8 <span class='red'>♥</span>",
-  // "1 Rider - 9 <span class='red'>♥</span>",
-  // "18 Dog - 10 <span class='red'>♥</span>",
-  // "24 Heart - Jack <span class='red'>♥</span>",
-  // "17 Stork - Queen <span class='red'>♥</span>",
-  // "4 House - King <span class='red'>♥</span>",
-  // "28 Man - Ace <span class='red'>♥</span>",
-  // "36 Cross - 6 ♣",
-  // "23 Mice - 7 ♣",
-  // "21 Mountain - 8 ♣",
-  // "14 Fox - 9 ♣",
-  // "15 Bear - 10 ♣",
-  // "11 Whip - Jack ♣",
-  // "7 Snake - Queen ♣",
-  // "6 Clouds - King ♣",
-  // "25 Ring - Ace ♣",
-  // "2 Clover - 6 <span class='red'>♦</span>",
-  // "12 Bird - 7 <span class='red'>♦</span>",
-  // "33 Key - 8 <span class='red'>♦</span>",
-  // "8 Coffin - 9 <span class='red'>♦</span>",
-  // "26 Book - 10 <span class='red'>♦</span>",
-  // "10 Scythe -Jack  <span class='red'>♦</span>",
-  // "22 Path - Queen <span class='red'>♦</span>",
-  // "34 Fish - King <span class='red'>♦</span>",
-  // "31 Sun - Ace <span class='red'>♦</span>"
-
   "(19) Tower <span class='playingcard'>🂦</span>",
   "(27) Letter <span class='playingcard'>🂧</span>",
   "(20) Garden <span class='playingcard'>🂨</span>",
@@ -227,7 +190,8 @@ function getRandomInt(max) {
 }
 
 buttonTarot.addEventListener("click", (e) => {
-  output.innerHTML = cards[getRandomInt(78)] + upOrDown[getRandomInt(2)];
+  // output.innerHTML = cards[getRandomInt(78)] + upOrDown[getRandomInt(2)];
+  output.innerHTML = cards[getRandomInt(78)];
 });
 
 buttonLenormand.addEventListener("click", (e) => {
